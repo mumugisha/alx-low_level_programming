@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -S -mesm=Intel $CFILE
+gcc -S -mesm = Intel $CFILE

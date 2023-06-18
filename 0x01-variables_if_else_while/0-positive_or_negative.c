@@ -3,6 +3,7 @@
  * main - program print positive negative number or zero
  *
  * Return: 0 (success)
+ *
 */
 int main(void)
 {

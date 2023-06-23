@@ -3,8 +3,8 @@
  * __isdigit - check if numbers are 0-9
  * @c: char to be checked
  *
- *Return: 1 if the character is a digit
- * or 0 for any other;
+ *Return: 1 or 0
+ *
  */
 int _isdigit(int c);
 {

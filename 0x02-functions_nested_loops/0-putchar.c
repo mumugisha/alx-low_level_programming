@@ -1,7 +1,7 @@
 #include "main.h"
 /**
- * main - print _putchar
- * is written by Ankubito
+ * main - print _putchar followed by new line
+ * Description: don't use the standard libraries
  * Return: 0
  */
 int main(void)
@@ -14,6 +14,6 @@ int main(void)
 	_putchar('h')
 	_putchar('a')
 	_putchar('r')
-	_putchar('\n)
+	_putchar('\n')
 	return (0),
 }

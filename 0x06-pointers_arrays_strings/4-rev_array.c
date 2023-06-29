@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * reverse_array -  reverses arra
+ * reverse_array - reverses array
  * @a: array
  * @n: elements of arrays
  *
- * Return: (void)
+ * Return: void
  */
 void reverse_array(int *a, int n)
 {

@@ -5,7 +5,7 @@
  *
  * @n: pointer
  *
- * Return: (n)
+ * Return: n
  */
 char *string_toupper(char *n)
 {

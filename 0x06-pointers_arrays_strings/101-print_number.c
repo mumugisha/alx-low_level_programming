@@ -1,7 +1,6 @@
 #include "main.h"
-
 /**
- * print_number - prints an integer
+ * print_number - print number chars
  * @n: integer
  *
  * Return: 0
@@ -24,5 +23,4 @@ void print_number(int n)
 	}
 
 	_putchar((n1 % 10) + '0');
-
 }

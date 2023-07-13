@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * *array_range: creates an array of integers
+ * *array_range - creates an array of integers
  * @min: min value stored
  * @max: max value stored and n elements
  *

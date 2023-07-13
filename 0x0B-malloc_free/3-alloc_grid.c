@@ -2,11 +2,10 @@
 #include <stdlib.h>
 
 /**
- * alloc_grid - returns a pointer to
- * a 2 dimensional array of integers
+ * alloc_grid - nested loop
  * @width: width input
- * height: height input
- * return: pointer of 2 dim array
+ * @height: height input
+ * Return: pointer of 2 dim array
  */
 int **alloc_grid(int width, int height)
 {
@@ -28,7 +27,7 @@ int **alloc_grid(int width, int height)
 		if (haa[x] == NULL)
 		{
 			for (; x >= 0; x--)
-				free(haa[]);
+				free(haa[x]);
 
 			free(haa);
 			return (NULL);
@@ -36,9 +35,9 @@ int **alloc_grid(int width, int height)
 
 	}
 
-	for (x = ; x < height; x++)
+	for (x = 0; x < height; x++)
 	{
-		for (y = ; y < width; y++)
+		for (y = 0; y < width; y++)
 		haa[x][y] = 0;
 
 	}

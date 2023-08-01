@@ -5,7 +5,7 @@
  * @head: pointer to 1st element
  *
  * Return: 0 if ls is empty,
- * data inside elements deleted
+ * data inside element were deleted
  */
 int pop_listint(listint_t **head)
 {

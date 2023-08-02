@@ -1,7 +1,7 @@
 #include "lists.h"
 #include <stdio.h>
 
-size_t looped_listint_len(const list_t *head);
+size_t looped_listint_len(const listint_t *head);
 size_t print_listint_safe(const listint_t *head);
 
 /**
@@ -11,7 +11,7 @@ size_t print_listint_safe(const listint_t *head);
  * Return:0 -  if ls is not looped, or n of unique
  * node in ls
  */
-size_t looped_listint_len(const list_t *head)
+size_t looped_listint_len(const listint_t *head)
 {
 	const listint_t *goat, *rabbit;
 	size_t nodes = 1;
@@ -27,14 +27,14 @@ size_t looped_listint_len(const list_t *head)
 		if (goat == rabbit)
 		{
 			goat = head;
-			while (tortoise != rabbit)
+			while (goat != rabbit)
 			{
 				nodes++;
 				goat = goat->next;
 				rabbit = rabbit->next;
 			}
 
-			goat = goat->next
+			goat = goat->next;
 			while (goat != rabbit)
 			{
 				nodes++;
@@ -53,7 +53,7 @@ size_t looped_listint_len(const list_t *head)
 }
 
 /**
- * print_listint_safe - print listint ls
+ * print_listint_safe(const listint_t *head)
  * @head: pointer to head of listint_t ls
  *
  * Return: n nodes in ls

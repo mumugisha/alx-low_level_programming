@@ -53,7 +53,7 @@ size_t looped_listint_len(const list_t *head)
 }
 
 /**
- * size_t print_listint_safe(const listint_t *head)
+ * print_listint_safe - print listint ls
  * @head: pointer to head of listint_t ls
  *
  * Return: n nodes in ls
@@ -61,9 +61,9 @@ size_t looped_listint_len(const list_t *head)
 size_t print_listint_safe(const listint_t *head)
 {
 	size_t nodes, index = 0;
-	
+
 	nodes = looped_listint_len(head);
-	
+
 	if (nodes == 0)
 	{
 		for (; head != NULL; nodes++)
@@ -71,7 +71,7 @@ size_t print_listint_safe(const listint_t *head)
 			printf("[%p] %d\n", (void *)head, head->n);
 		}
 	}
-	
+
 	else
 	{
 		for (index = 0; index < nodes; index++)

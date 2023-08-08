@@ -14,7 +14,7 @@ void print_version(unsigned char *e_ident);
 void print_abi(unsigned char *e_ident);
 void print_asabi(unsigned char *e_ident);
 void print_type(unsigned int e_entry, unsigned char *e_ident);
-void print_type(unsigned long int e_entry, unsigned char *e_ident);
+void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
 
 /**
@@ -23,16 +23,16 @@ void close_elf(int elf);
  *
  * Description: when file is never elf - exit code 98
  */
-void check_elf(unsigned char *e_ident);
+void check_elf(unsigned char *e_ident)
 {
 	int index;
 
 	for (index = 0; index < 4; index++)
 	{
-		if (e_dent[index] != 127 &&
-			e_dent[index] != 'E' &&
-			e_dent[index] != 'L' &&
-			e_dent[index] != 'F')
+		if (e_ident[index] != 127 &&
+			e_ident[index] != 'E' &&
+			e_ident[index] != 'L' &&
+			e_ident[index] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not ann ELF file\n");
 			exit(98);
@@ -48,9 +48,9 @@ void check_elf(unsigned char *e_ident);
  */
 void print_magic(unsigned char *e_ident)
 {
-	int index 
+	int index;
 
-	printf(" Magic: ")
+	printf(" Magic: ");
 
 	for (index = 0; index < EI_NIDENT; index++)
 	{
@@ -68,7 +68,7 @@ void print_magic(unsigned char *e_ident)
  */
 void print_class(unsigned char *e_ident)
 {
-	printf(" Class: ")
+	printf(" Class: ");
 	
 	switch (e_ident[EI_CLASS])
 	{
@@ -111,10 +111,10 @@ void print_data(unsigned char *e_ident)
 }
 
 /**
- *  * print_version - print version of elf
- *   * @e_ident: pointer to array with elf
- *    */
-void print_version(unsigned char *e_ident)
+ * print_version - print version of elf
+ * @e_ident: pointer to array with elf
+ */
+void print_version(unsigned char *e_ident);
 {
 	 printf(" Version: %d",
 			  e_ident[EI_VERSION]);
@@ -131,7 +131,7 @@ void print_version(unsigned char *e_ident)
 }
 
 /**
- * print_osabi - print OS/ABI of an elf 
+ * print_osabi - print OS/ABI of an elf
  * @e_ident: pointer to array with elf
  */
 void print_osabi(unsigned char *e_ident)

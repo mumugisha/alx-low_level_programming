@@ -1,6 +1,6 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
 
 /**
  * create_buffer - To allocate 1024 byte for buffer
@@ -34,7 +34,8 @@ void close_file(int fd)
 
 	if (c == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: can't cose fd %d\n", fd);
+		dprintf(STDERR_FILENO,
+				"Error: can't cose fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -44,10 +45,6 @@ void close_file(int fd)
  * @argv: array of pointer to argument
  *
  * Return: Success (0)
- * Description: the arg is not correct - exit code 97
- * if file_from is nonexistant or can't read - exit code 98
- * if file_to can't be written - exit code 99
- * if file_to or file_from can't close - exit code 100
  */
 int main(int argc, char *argv[])
 {
@@ -56,7 +53,8 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "usage:cp file_from file_to\n");
+		dprintf(STDERR_FILENO,
+				"usage:cp file_from file_to\n");
 		exit(97);
 	}
 
@@ -90,6 +88,5 @@ int main(int argc, char *argv[])
 	free(buffer);
 	close_file(from);
 	close_file(to);
-
-	return (0);
+	return (result);
 }

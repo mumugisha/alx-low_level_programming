@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * main - entry point
+ * main - entry point a
  *
  * Return: 0
  */

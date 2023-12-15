@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * main - check the code
+ * main - check the code rm
  *
  * Return: Always 0.
  */

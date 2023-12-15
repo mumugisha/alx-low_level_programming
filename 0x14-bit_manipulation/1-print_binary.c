@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_binary - print binary equal to dec numb
+ * print_binary - print binary equal to dec number
  * @n: n for printing binary
  *
  * Return: 0

@@ -4,7 +4,7 @@
 
 /**
  * main - check the code
- * @ac: n of command line argument
+ * @ac: n of command lines argument
  * @av: array of pointer to string
  * Return: Always 0.
  */

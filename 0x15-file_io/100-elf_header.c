@@ -18,7 +18,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
 
 /**
- * check_elf - check files in the elf file
+ * check_elf - check file in the elf file
  * @e_ident: pointer to array with elf n
  *
  * Description: when file is never elf - exit code 98
@@ -311,4 +311,3 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	close_elf(o);
 	return (0);
 }
-

@@ -41,10 +41,10 @@ void check_elf(unsigned char *e_ident)
 }
 
 /**
- * print_magic - print magic n of elf
- * @e_dent: pointer to array with elf n
+ * print_magic - print magic num of the elf
+ * @e_dent: pointer to the array with elf num
  *
- * Description: magic n separated by space
+ * Description: magic num separated by space
  */
 void print_magic(unsigned char *e_ident)
 {
@@ -63,8 +63,8 @@ void print_magic(unsigned char *e_ident)
 	}
 }
 /**
- * print_class - print class of elf
- * @e_ident: pointer to array with elf
+ * print_class - print the class of elf
+ * @e_ident: pointer to the array with elf
  */
 void print_class(unsigned char *e_ident)
 {
@@ -86,8 +86,8 @@ void print_class(unsigned char *e_ident)
 	}
 }
 /**
- * print_data - print data of elf
- * @e_ident: pointer to array with elf
+ * print_data - print data of the elf
+ * @e_ident: pointer to the array with elf
  */
 void print_data(unsigned char *e_ident)
 {
@@ -110,8 +110,8 @@ void print_data(unsigned char *e_ident)
 }
 
 /**
- * print_version - print version of elf
- * @e_ident: pointer to array with elf
+ * print_version - print the version of elf
+ * @e_ident: pointer to the array with elf
  */
 void print_version(unsigned char *e_ident)
 {
@@ -130,8 +130,8 @@ void print_version(unsigned char *e_ident)
 }
 
 /**
- * print_osabi - print OS/ABI of an elf
- * @e_ident: pointer to array with elf
+ * print_osabi - print OS/ABI of the elf
+ * @e_ident: pointer to the array with elf
  */
 void print_osabi(unsigned char *e_ident)
 {
@@ -175,8 +175,8 @@ void print_osabi(unsigned char *e_ident)
 }
 
 /**
- * print_abi - print ABI version elf
- * @e_ident: pointer to array with elf
+ * print_abi - print the ABI version the elf
+ * @e_ident: pointer to the array with elf
  */
 void print_abi(unsigned char *e_ident)
 {
@@ -185,9 +185,9 @@ void print_abi(unsigned char *e_ident)
 }
 
 /**
- * print_type - print type of elf
- * @e_type:  elf type
- * @e_ident: pointer to array with elf
+ * print_type - print the type of an elf
+ * @e_type:  the elf type
+ * @e_ident: pointer to the array with the elf
  */
 void print_type(unsigned int e_type, unsigned char *e_ident)
 {
@@ -219,9 +219,9 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 }
 
 /**
- * print_entry - print entry point elf
- * @e_entry: address of elf point.
- * @e_ident: pointer to array with elf .
+ * print_entry - print the entry point an elf
+ * @e_entry: address of the elf point.
+ * @e_ident: pointer to the array with an elf .
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
@@ -242,10 +242,10 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 }
 
 /**
- * close_elf - close elf file.
- * @elf:  file descriptor of elf file.
+ * close_elf - close the elf file.
+ * @elf:  file descriptor of the elf file.
  *
- * Description: If the file can’t close - exit code 98.
+ * Description: If the file does not close - exit code 98.
  */
 void close_elf(int elf)
 {
@@ -258,14 +258,14 @@ void close_elf(int elf)
 }
 
 /**
- * main - displays info  in the
- * elf header @ start of elf file.
- * @argc: n of argument given to the program.
- * @argv: array of pointer to the argument.
+ * main - displays an info in the file
+ * elf header @ the start of the elf file.
+ * @argc: num of argument a given to this program.
+ * @argv: array of the pointer to argument.
  *
  * Return: 0 on success.
  *
- * Description: If file is not elf file or
+ * Description: If file isn't elf file or
  * function failed - exit code 98.
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])

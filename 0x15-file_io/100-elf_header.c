@@ -91,7 +91,6 @@ void print_class(unsigned char *e_ident)
  */
 void print_data(unsigned char *e_ident)
 {
-{
 	printf(" Data: ");
 
 	switch (e_ident[EI_DATA])
@@ -114,7 +113,7 @@ void print_data(unsigned char *e_ident)
  * print_version - print version of elf
  * @e_ident: pointer to array with elf
  */
-void print_version(unsigned char *e_ident);
+void print_version(unsigned char *e_ident)
 {
 	 printf(" Version: %d",
 			  e_ident[EI_VERSION]);

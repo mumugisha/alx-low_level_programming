@@ -7,12 +7,12 @@
  */
 void printing_array(int *array, size_t size)
 {
-    size_t i;
+	size_t i;
 
-    printf("Searching in array");
-    for (i = 0; i < size; i++)
-        printf("%s %d", (i == 0) ? ":" : ",", array[i]);
-    printf("\n");
+	printf("Searching in array");
+	for (i = 0; i < size; i++)
+		printf("%s %d", (i == 0) ? ":" : ",", array[i]);
+	printf("\n");
 }
 
 /**
@@ -28,25 +28,25 @@ void printing_array(int *array, size_t size)
  */
 int binary_search_index(int *array, size_t lower, size_t higher, int value)
 {
-    size_t mid;
+	size_t mid;
 
-    if (lower > higher)
-        return (-1);
+	if (lower > higher)
+		return (-1);
 
-    printing_array(array + lower, higher - lower + 1);
+	printing_array(array + lower, higher - lower + 1);
 
-    mid = lower + (higher - lower) / 2;
+	mid = lower + (higher - lower) / 2;
 
-    if (array[mid] == value)
-    {
-        if (mid == lower || array[mid - 1] != value)
-            return (mid);
-        return (binary_search_index(array, lower, mid, value));
-    }
-    else if (array[mid] > value)
-        return (binary_search_index(array, lower, mid - 1, value));
-    else
-        return (binary_search_index(array, mid + 1, higher, value));
+	if (array[mid] == value)
+	{
+		if (mid == lower || array[mid - 1] != value)
+			return (mid);
+		return (binary_search_index(array, lower, mid, value));
+	}
+	else if (array[mid] > value)
+		return (binary_search_index(array, lower, mid - 1, value));
+	else
+		return (binary_search_index(array, mid + 1, higher, value));
 }
 
 /**
@@ -61,8 +61,8 @@ int binary_search_index(int *array, size_t lower, size_t higher, int value)
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-    if (array == NULL)
-        return (-1);
+	if (array == NULL)
+		return (-1);
 
-    return (binary_search_index(array, 0, size - 1, value));
+	return (binary_search_index(array, 0, size - 1, value));
 }

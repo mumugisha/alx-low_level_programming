@@ -1,16 +1,13 @@
 #include "search_algos.h"
 #include <stdio.h>
 
-#define PRINT(a, lower, higher) do \
-{ \
+#define PRINT(a, lower, higher) do { \
 	size_t i; \
-	for (i = (lower); i <= (higher); i++) \
-	{ \
+	printf("Searching in array: "); \
+	for (i = (lower); i <= (higher); i++) { \
 		printf("%d%s", a[i], (i == (higher)) ? "\n" : ", "); \
 	} \
 } while (0)
-
-int binary_search_index(int *a, size_t lower, size_t higher, int value);
 
 /**
  * advanced_binary - searches for a value in a sorted array

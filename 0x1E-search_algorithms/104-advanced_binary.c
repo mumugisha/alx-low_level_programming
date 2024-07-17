@@ -21,15 +21,10 @@
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	size_t start, end;
-
 	if (!array || size == 0)
 		return (-1);
 
-	start = 0;
-	end = size - 1;
-
-	return (binary_search_index(array, start, end, value));
+	return (binary_search_index(array, 0, size - 1, value));
 }
 
 /**
@@ -55,11 +50,15 @@ int binary_search_index(int *a, size_t lower, size_t higher, int value)
 	mid = (lower + higher) / 2;
 
 	if (a[mid] == value)
-		return ((mid && a[mid - 1] == value) ?
-			binary_search_index(a, lower, mid, value) : (int)mid);
+	{
+		if (mid == lower || a[mid - 1] != value)
+			return (int)mid;
+		else
+			return binary_search_index(a, lower, mid, value);
+	}
 
 	if (a[mid] > value)
-		return (binary_search_index(a, lower, mid, value));
+		return binary_search_index(a, lower, mid - 1, value);
 
-	return (binary_search_index(a, mid + 1, higher, value));
+	return binary_search_index(a, mid + 1, higher, value);
 }

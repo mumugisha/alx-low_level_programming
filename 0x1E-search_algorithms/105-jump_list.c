@@ -3,8 +3,7 @@
 #include <stdio.h>
 
 /**
- * jump_list - Searches for a value in a sorted list
- * using jump search algorithm
+ * jump_list - Searches for a value in a sorted list using jump search algorithm
  *
  * @list: Pointer to the head of the list
  * @size: Number of nodes in the list
@@ -14,33 +13,35 @@
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t idx = 0, a = 0, b = (size_t)sqrt((double)size);
-	listint_t *prev = NULL;
+	size_t index = 0, a = 0, b;
+	listint_t *prev;
 
 	if (list == NULL || size == 0)
 		return (NULL);
 
+	b = (size_t)sqrt((double)size);
+
 	do {
 		prev = list;
 		a++;
-		idx = a * b;
+		index = a * b;
 
-		while (list->next && list->idx < idx)
+		while (list->next && list->index < index)
 			list = list->next;
 
-		if (list->next == NULL && idx != list->idx)
-			idx = list->idx;
+		if (list->next == NULL && index > list->index)
+			index = list->index;
 
-		printf("Value checked at index [%d] = [%d]\n", (int)idx, list->n);
+		printf("Value checked at index [%d] = [%d]\n", (int)index, list->n);
 
-	} while (idx < size && list->next && list->n < value);
+	} while (list->next && index < size && list->n < value);
 
 	printf("Value found between indexes ");
-	printf("[%d] and [%d]\n", (int)prev->idx, (int)list->idx);
+	printf("[%d] and [%d]\n", (int)prev->index, (int)list->index);
 
-	for (; prev && prev->idx <= list->idx; prev = prev->next)
+	for (; prev && prev->index <= list->index; prev = prev->next)
 	{
-		printf("Value checked at index [%d] = [%d]\n", (int)prev->idx, prev->n);
+		printf("Value checked at index [%d] = [%d]\n", (int)prev->index, prev->n);
 		if (prev->n == value)
 			return (prev);
 	}

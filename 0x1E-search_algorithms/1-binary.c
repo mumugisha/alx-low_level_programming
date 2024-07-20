@@ -6,7 +6,7 @@
  * @start: Starting index of the array to print
  * @end: Ending index of the array to print
  */
-void print_array(int *array, size_t start, size_t end)
+void print_array(const int *array, size_t start, size_t end)
 {
 	size_t i;
 
@@ -22,40 +22,35 @@ void print_array(int *array, size_t start, size_t end)
 
 /**
  * binary_search - searches for a value in a sorted array of integers
- *                 using the Binary search algorithm
+ * Using the Binary search algorithm
  * @array: Pointer to the first element of the array to search in
  * @size: Number of elements in the array
  * @value: The value to search for
  *
- * Return: If value is not present in array or if array is NULL,
- *         your function must return -1
+ * Return: If value is not present in array
+ * or if array is NULL, your function must return -1
  */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t start, mid, end;
+	size_t left, mid, right;
 
-	if (!array || size == 0)
+	if (array == NULL || size == 0)
 		return (-1);
 
-	start = 0;
-	end = size - 1;
+	left = 0;
+	right = size - 1;
 
-	print_array(array, start, end);
-	while (start <= end)
+	while (left <= right)
 	{
-		mid = start + (end - start) / 2;
-		if (array[mid] < value)
-		{
-			start = mid + 1;
-			print_array(array, start, end);
-		}
-		else if (array[mid] > value)
-		{
-			end = mid - 1;
-			print_array(array, start, end);
-		}
-		else
+		print_array(array, left, right);
+		mid = left + (right - left) / 2;
+
+		if (array[mid] == value)
 			return (mid);
+		else if (array[mid] < value)
+			left = mid + 1;
+		else
+			right = mid - 1;
 	}
 
 	return (-1);

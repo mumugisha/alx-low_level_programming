@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 /**
- * jump_list - Searches for a value in a sorted list using jump search algorithm
- *
+ * jump_list - Searches for a value in a sorted list
+ * Using jump search algorithm
  * @list: Pointer to the head of the list
  * @size: Number of nodes in the list
  * @value: Value to search for

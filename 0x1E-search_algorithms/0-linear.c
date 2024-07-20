@@ -8,8 +8,9 @@
  * @value: The value to search for
  *
  * Return: The first index where the value is located,
- *         or -1 if value is not present or array is NULL
+ * or -1 if value is not present or array is NULL
  */
+
 int linear_search(int *array, size_t size, int value)
 {
 	size_t a;

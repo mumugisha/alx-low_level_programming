@@ -1,5 +1,4 @@
 #include "search_algos.h"
-#include <stdio.h>
 
 /**
  * print_array - Prints the array being searched
@@ -23,7 +22,7 @@ void print_array(int *array, size_t start, size_t end)
 
 /**
  * binary_search - searches for a value in a sorted array of integers
- *                 using the Binary search algorithm
+ * Using the Binary search algorithm
  * @array: Pointer to the first element of the array to search in
  * @size: Number of elements in the array
  * @value: The value to search for

@@ -9,25 +9,20 @@
 
 /**
  * allocate_buffer - Allocates 1024 bytes for a buffer.
- * @file: Name of the file for error messages.
+ * @file: Name of the file.
  *
  * Return: Pointer to the newly allocated buffer.
  */
 char *allocate_buffer(char *file)
 {
 	char *buffer;
-	int i = 0;
 
 	buffer = malloc(sizeof(char) * BUF_SIZE);
 
 	if (buffer == NULL)
 	{
 		write(STDERR_FILENO, "Error: Can't write to ", 22);
-		while (file[i] != '\0') /* Replacement for _strlen */
-		{
-			write(STDERR_FILENO, &file[i], 1);
-			i++;
-		}
+		write(STDERR_FILENO, file, _strlen(file));
 		write(STDERR_FILENO, "\n", 1);
 		exit(99);
 	}
@@ -37,50 +32,27 @@ char *allocate_buffer(char *file)
 
 /**
  * close_file - Closes file descriptors.
- * @fd: The file descriptor to close.
+ * @fd: The file descriptor to be closed.
  */
 void close_file(int fd)
 {
-	int close_status;
-	char fd_str[10];
-	int i = 0, j, temp_fd;
+	int c;
 
-	close_status = close(fd);
+	c = close(fd);
 
-	if (close_status == -1)
+	if (c == -1)
 	{
 		write(STDERR_FILENO, "Error: Can't close fd ", 22);
-
-		if (fd == 0)
-			fd_str[i++] = '0';
-		else
-		{
-			temp_fd = fd;
-			while (temp_fd > 0)
-			{
-				fd_str[i++] = (temp_fd % 10) + '0';
-				temp_fd /= 10;
-			}
-			/* Reverse the string */
-			for (j = 0; j < i / 2; j++)
-			{
-				char temp = fd_str[j];
-				fd_str[j] = fd_str[i - j - 1];
-				fd_str[i - j - 1] = temp;
-			}
-		}
-		fd_str[i] = '\0';
-
-		write(STDERR_FILENO, fd_str, i);
-		write(STDERR_FILENO, "\n", 1);
+		_putchar(fd + '0');
+		_putchar('\n');
 		exit(100);
 	}
 }
 
 /**
  * main - Copies the contents of a file to another file.
- * @argc: Number of arguments supplied to the program.
- * @argv: Array of pointers to the arguments.
+ * @argc: Number of arguments.
+ * @argv: Array of pointers to arguments.
  *
  * Return: 0 on success.
  */

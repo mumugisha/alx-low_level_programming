@@ -8,10 +8,37 @@
 #define BUF_SIZE 1024
 
 /**
- * allocate_buffer - Allocates 1024 bytes for a buffer.
- * @file: Name of the file.
+ * _strlen - Returns the length of a string.
+ * @str: The string to measure.
  *
- * Return: Pointer to the newly allocated buffer.
+ * Return: The length of the string.
+ */
+int _strlen(char *str)
+{
+	int len = 0;
+
+	while (str[len] != '\0')
+		len++;
+
+	return (len);
+}
+
+/**
+ * _putchar - Writes a character to stdout.
+ * @c: The character to print.
+ *
+ * Return: On success 1, on error -1.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
+ * allocate_buffer - Allocates memory for a buffer.
+ * @file: The name of the file.
+ *
+ * Return: A pointer to the allocated buffer.
  */
 char *allocate_buffer(char *file)
 {
@@ -31,7 +58,7 @@ char *allocate_buffer(char *file)
 }
 
 /**
- * close_file - Closes file descriptors.
+ * close_file - Closes a file descriptor.
  * @fd: The file descriptor to be closed.
  */
 void close_file(int fd)
@@ -50,11 +77,11 @@ void close_file(int fd)
 }
 
 /**
- * main - Copies the contents of a file to another file.
- * @argc: Number of arguments.
- * @argv: Array of pointers to arguments.
+ * main - Copies the content of one file to another file.
+ * @argc: The number of arguments.
+ * @argv: An array of pointers to the arguments.
  *
- * Return: 0 on success.
+ * Return: Always 0 (Success).
  */
 int main(int argc, char *argv[])
 {

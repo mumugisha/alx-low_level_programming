@@ -6,43 +6,6 @@
 #include <unistd.h>
 
 #define BUF_SIZE 1024
-#define ERROR_WRITE "Error: Can't write to "
-#define ERROR_READ "Error: Can't read from file "
-#define ERROR_CLOSE "Error: Can't close fd "
-#define USAGE_MSG "Usage: cp file_from file_to\n"
-#define EXIT_CODE_USAGE 97
-#define EXIT_CODE_READ 98
-#define EXIT_CODE_WRITE 99
-#define EXIT_CODE_CLOSE 100
-
-/**
- * _strlen - Calculates the length of a string.
- * @str: The string to calculate the length of.
- *
- * Return: The length of the string.
- */
-int _strlen(char *str)
-{
-    int length = 0;
-
-    while (str[length] != '\0')
-    {
-        length++;
-    }
-
-    return (length);
-}
-
-/**
- * _putchar - Writes a character to the standard output.
- * @c: The character to write.
- *
- * Return: On success, 1 is returned. On error, -1 is returned.
- */
-int _putchar(char c)
-{
-    return (write(1, &c, 1));
-}
 
 /**
  * allocate_buffer - Allocates 1024 bytes for a buffer.
@@ -55,16 +18,15 @@ char *allocate_buffer(char *file)
     char *buffer;
 
     buffer = malloc(sizeof(char) * BUF_SIZE);
-
     if (buffer == NULL)
     {
-        write(STDERR_FILENO, ERROR_WRITE, _strlen(ERROR_WRITE));
+        write(STDERR_FILENO, "Error: Can't write to ", 22);
         write(STDERR_FILENO, file, _strlen(file));
         write(STDERR_FILENO, "\n", 1);
-        exit(EXIT_CODE_WRITE);
+        exit(99);
     }
 
-    return (buffer);
+    return buffer;
 }
 
 /**
@@ -73,16 +35,15 @@ char *allocate_buffer(char *file)
  */
 void close_file(int fd)
 {
-    int c;
+    int close_status;
 
-    c = close(fd);
-
-    if (c == -1)
+    close_status = close(fd);
+    if (close_status == -1)
     {
-        write(STDERR_FILENO, ERROR_CLOSE, _strlen(ERROR_CLOSE));
+        write(STDERR_FILENO, "Error: Can't close fd ", 22);
         _putchar(fd + '0');
         write(STDERR_FILENO, "\n", 1);
-        exit(EXIT_CODE_CLOSE);
+        exit(100);
     }
 }
 
@@ -95,65 +56,65 @@ void close_file(int fd)
  */
 int main(int argc, char *argv[])
 {
-    int from, to, r, w;
+    int file_from, file_to, read_status, write_status;
     char *buffer;
 
     if (argc != 3)
     {
-        write(STDERR_FILENO, USAGE_MSG, _strlen(USAGE_MSG));
-        exit(EXIT_CODE_USAGE);
+        write(STDERR_FILENO, "Usage: cp file_from file_to\n", 28);
+        exit(97);
     }
 
     buffer = allocate_buffer(argv[2]);
-    from = open(argv[1], O_RDONLY);
-    if (from == -1)
+    file_from = open(argv[1], O_RDONLY);
+    if (file_from == -1)
     {
-        write(STDERR_FILENO, ERROR_READ, _strlen(ERROR_READ));
+        write(STDERR_FILENO, "Error: Can't read from file ", 28);
         write(STDERR_FILENO, argv[1], _strlen(argv[1]));
         write(STDERR_FILENO, "\n", 1);
         free(buffer);
-        exit(EXIT_CODE_READ);
+        exit(98);
     }
-    to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-    if (to == -1)
+
+    file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+    if (file_to == -1)
     {
-        write(STDERR_FILENO, ERROR_WRITE, _strlen(ERROR_WRITE));
+        write(STDERR_FILENO, "Error: Can't write to ", 22);
         write(STDERR_FILENO, argv[2], _strlen(argv[2]));
         write(STDERR_FILENO, "\n", 1);
         free(buffer);
-        close_file(from);
-        exit(EXIT_CODE_WRITE);
+        close(file_from);
+        exit(99);
     }
 
-    while ((r = read(from, buffer, BUF_SIZE)) > 0)
+    while ((read_status = read(file_from, buffer, BUF_SIZE)) > 0)
     {
-        w = write(to, buffer, r);
-        if (w == -1)
+        write_status = write(file_to, buffer, read_status);
+        if (write_status == -1)
         {
-            write(STDERR_FILENO, ERROR_WRITE, _strlen(ERROR_WRITE));
+            write(STDERR_FILENO, "Error: Can't write to ", 22);
             write(STDERR_FILENO, argv[2], _strlen(argv[2]));
             write(STDERR_FILENO, "\n", 1);
             free(buffer);
-            close_file(from);
-            close_file(to);
-            exit(EXIT_CODE_WRITE);
+            close(file_from);
+            close(file_to);
+            exit(99);
         }
     }
 
-    if (r == -1)
+    if (read_status == -1)
     {
-        write(STDERR_FILENO, ERROR_READ, _strlen(ERROR_READ));
+        write(STDERR_FILENO, "Error: Can't read from file ", 28);
         write(STDERR_FILENO, argv[1], _strlen(argv[1]));
         write(STDERR_FILENO, "\n", 1);
         free(buffer);
-        close_file(from);
-        close_file(to);
-        exit(EXIT_CODE_READ);
+        close(file_from);
+        close(file_to);
+        exit(98);
     }
 
     free(buffer);
-    close_file(from);
-    close_file(to);
-
-    return (0);
+    close_file(file_from);
+    close_file(file_to);
+    return 0;
 }
